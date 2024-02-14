@@ -1,9 +1,11 @@
 #pragma once
 
-const int WINDOW_WIDTH = 640;
+const int WINDOW_WIDTH = 512;
 const int WINDOW_HEIGHT = 480;
 const int FPS = 60;
 const int FPS_TARGET = 1000 / FPS;
+
+const int TILE_SIZE = 32;
 
 const float ACCELERATION = 200.0f;
 const float GRAVITY = 100.0f;

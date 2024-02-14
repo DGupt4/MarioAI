@@ -1,18 +1,18 @@
 #include <iostream>
 
+#include "Constants.h"
 #include "Game.h"
 #include "Map.h"
-#include "Constants.h"
 
-Game::Game() : window(NULL), renderer(NULL), player(), map("src/test_map.csv"), delta_time(0), ground_rect(), quit(false) {
+Game::Game()
+    : window(NULL), renderer(NULL), player(), map("src/test_map.csv"),
+      delta_time(0), ground_rect(), quit(false) {
   if (!initialize()) {
     std::cout << "Initalization failed." << std::endl;
   }
 }
 
-Game::~Game() {
-  cleanup();
-}
+Game::~Game() { cleanup(); }
 
 bool Game::initialize() {
   if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -49,27 +49,26 @@ void Game::cleanup() {
 }
 
 void Game::process_input() {
-    SDL_Event event;
-    while (SDL_PollEvent(&event)) {
+  SDL_Event event;
+  while (SDL_PollEvent(&event)) {
 
-
-      if (event.type == SDL_QUIT) {
-        quit = true;
-      } else{
-        player.process_input(event);
-      }
+    if (event.type == SDL_QUIT) {
+      quit = true;
+    } else {
+      player.process_input(event);
     }
+  }
 }
 
-void Game::update() {
-  player.update(delta_time, ground_rect);
-}
+void Game::update() { player.update(delta_time, ground_rect); }
 
 void Game::render() {
   SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
   SDL_RenderClear(renderer);
 
-  // Test Platform 
+  map.render(renderer);
+
+  // Test Platform
   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
   SDL_RenderFillRect(renderer, &ground_rect);
 
@@ -96,6 +95,5 @@ void Game::run() {
     }
 
     delta_time = (SDL_GetTicks() - frame_start) / 1000.0f;
-
   }
 }

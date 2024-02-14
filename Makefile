@@ -11,7 +11,6 @@ SRC_DIR = src
 OBJ_DIR = obj
 BIN_DIR = bin
 
-
 # Files
 SRC = $(wildcard $(SRC_DIR)/*.cpp)
 OBJ = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SRC))
