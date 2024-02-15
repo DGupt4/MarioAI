@@ -3,7 +3,7 @@
 # Compiler and flags
 CC = g++
 CFLAGS = $(shell sdl2-config --cflags)
-LIBS = $(shell sdl2-config --libs)
+LIBS = $(shell sdl2-config --libs) -lSDL2_Image
 INCLUDE_FLAGS = -Iinclude
 
 # Directories
@@ -29,4 +29,3 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 
 run: all
 	./$(BIN_DIR)/$(EXEC)
-

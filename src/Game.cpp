@@ -34,6 +34,8 @@ bool Game::initialize() {
     return false;
   }
 
+  map.create_tile_texture(renderer);
+
   ground_rect.x = 0;
   ground_rect.y = 430;
   ground_rect.w = 640;
@@ -68,11 +70,11 @@ void Game::render() {
 
   map.render(renderer);
 
-  // Test Platform
-  SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-  SDL_RenderFillRect(renderer, &ground_rect);
+  // Testing platform
+  // SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+  // SDL_RenderFillRect(renderer, &ground_rect);
 
-  player.render(renderer);
+  // player.render(renderer);
 
   SDL_RenderPresent(renderer);
 }

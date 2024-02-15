@@ -1,6 +1,11 @@
 ### TODO
 
+- [ ] Implement a (simple) tiling/map system 
+    - [x] Use a texture to load the map 
+    - [x] Use the correct tile dimensions to cover the whole map 
+    - [x] Import and display real ground sprite 
+    - [ ] Cleanly load all the sprites (tile_ids?)
+    - [ ] Handling map csv > window size
+
+### DONE
 - [x] Find the correct display size
-- [ ] Change tiling to work for the actual display size
-    - [ ] Get proper CSV data 
-    - [ ] Should I be rendering on every frame? 
