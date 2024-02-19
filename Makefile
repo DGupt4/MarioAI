@@ -8,7 +8,6 @@ INCLUDE_FLAGS = -Iinclude
 
 # Directories
 SRC_DIR = src
-OBJ_DIR = obj
 BIN_DIR = bin
 
 # Files
@@ -24,7 +23,6 @@ $(BIN_DIR)/$(EXEC): $(OBJ)
 	$(CC) $(INCLUDE_FLAGS) $(CFLAGS) -o $@ $^ $(LIBS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 run: all
