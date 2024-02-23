@@ -12,6 +12,9 @@ public:
   void update(float delta_time, SDL_Rect platform);
   void render(SDL_Renderer *renderer);
 
+  int get_x();
+  int get_y();
+
 private:
   float x;
   float y;

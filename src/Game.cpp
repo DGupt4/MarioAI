@@ -41,6 +41,11 @@ bool Game::initialize() {
   ground_rect.w = 640;
   ground_rect.h = 50;
 
+  camera.x = 0;
+  camera.y = 0;
+  camera.w = WINDOW_WIDTH;
+  camera.h = WINDOW_HEIGHT;
+
   return true;
 }
 
@@ -62,19 +67,17 @@ void Game::process_input() {
   }
 }
 
-void Game::update() { player.update(delta_time, ground_rect); }
+void Game::update() { 
+  player.update(delta_time, ground_rect);
+  camera.x += 5;
+}
 
 void Game::render() {
   SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
   SDL_RenderClear(renderer);
+  map.render(renderer, camera);
 
-  map.render(renderer);
-
-  // Testing platform
-  // SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-  // SDL_RenderFillRect(renderer, &ground_rect);
-
-  // player.render(renderer);
+  player.render(renderer);
 
   SDL_RenderPresent(renderer);
 }

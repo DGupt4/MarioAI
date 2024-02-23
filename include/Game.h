@@ -27,5 +27,6 @@ private:
 
   float delta_time;
   SDL_Rect ground_rect;
+  SDL_Rect camera;
   bool quit;
 };

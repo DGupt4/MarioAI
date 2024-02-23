@@ -89,3 +89,7 @@ void Player::render(SDL_Renderer *renderer) {
 void Player::handle_key_state(std::string move, bool press) {
   key_state[move] = press;
 }
+
+int Player::get_x() { return x; }
+
+int Player::get_y() { return y; }
