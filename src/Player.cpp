@@ -4,9 +4,8 @@
 #include "Constants.h"
 #include "Player.h"
 
-// TODO: Find a better fix for width, height, x, y
 Player::Player()
-    : x(50), y(300), velocity_x(0), velocity_y(0), width(50), height(50),
+    : x(0), y(300), velocity_x(0), velocity_y(0), width(50), height(50),
       key_state(), is_on_ground(false) {}
 
 void Player::process_input(SDL_Event event) {
@@ -37,7 +36,7 @@ void Player::process_input(SDL_Event event) {
   }
 }
 
-void Player::update(float delta_time, SDL_Rect platform) {
+void Player::update(float delta_time, SDL_Rect platform, SDL_Rect& camera) {
 
   bool is_on_ground = false;
 
@@ -78,10 +77,20 @@ void Player::update(float delta_time, SDL_Rect platform) {
 
   x += velocity_x * delta_time;
   y += velocity_y * delta_time;
+
+  // Bound player to camera
+  if (x < camera.x) {
+    x = camera.x;
+    velocity_x = 0;
+  } else if (x > camera.x + camera.w) {
+    velocity_x = 0;
+    x = camera.x + camera.w;
+  }
+
 }
 
-void Player::render(SDL_Renderer *renderer) {
-  SDL_Rect playerRect = {x, y, width, height};
+void Player::render(SDL_Renderer *renderer, SDL_Rect& camera) {
+  SDL_Rect playerRect = {x - camera.x, y - camera.y, width, height};
   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
   SDL_RenderFillRect(renderer, &playerRect);
 }

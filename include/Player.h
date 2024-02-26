@@ -9,8 +9,8 @@ public:
   Player();
 
   void process_input(SDL_Event event);
-  void update(float delta_time, SDL_Rect platform);
-  void render(SDL_Renderer *renderer);
+  void update(float delta_time, SDL_Rect platform, SDL_Rect& camera);
+  void render(SDL_Renderer *renderer, SDL_Rect& camera);
 
   int get_x();
   int get_y();

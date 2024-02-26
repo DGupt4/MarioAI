@@ -1,10 +1,9 @@
 ### TODO
 
-- [ ] Player Camera
-    - [x] Basic scrolling functionality
-    - [ ] Scrolling based on player movement 
-
 ### DONE
+- [x] Player Camera
+    - [x] Basic scrolling functionality
+    - [x] Scrolling based on player movement 
 - [x] Find the correct display size
 - [x] Implement a (simple) tiling/map system 
     - [x] Use a texture to load the map 

@@ -90,7 +90,7 @@ int Map::get_width() { return tiles[0].size() * TILE_SIZE; }
 void Map::render(SDL_Renderer *renderer, SDL_Rect camera) {
   if (tile_texture != nullptr) {
     SDL_Rect src = {camera.x, camera.y, camera.w, camera.h};
-    SDL_Rect dest = {0, 0, WINDOW_WIDTH, WINDOW_WIDTH};
+    SDL_Rect dest = {0, 0, WINDOW_WIDTH, WINDOW_HEIGHT}; 
     SDL_RenderCopy(renderer, tile_texture, &src, &dest);
   }
 }

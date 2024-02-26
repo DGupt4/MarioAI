@@ -38,7 +38,7 @@ bool Game::initialize() {
 
   ground_rect.x = 0;
   ground_rect.y = 430;
-  ground_rect.w = 640;
+  ground_rect.w = map.get_width();
   ground_rect.h = 50;
 
   camera.x = 0;
@@ -68,16 +68,25 @@ void Game::process_input() {
 }
 
 void Game::update() { 
-  player.update(delta_time, ground_rect);
-  camera.x += 5;
+  player.update(delta_time, ground_rect, camera);
+
+  // Camera pos
+  int center_pos = player.get_x() - (WINDOW_WIDTH / 2);
+  if (center_pos > 0) { 
+    if (center_pos > camera.x) {
+      camera.x = center_pos; 
+    }
+  }
 }
 
 void Game::render() {
   SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
   SDL_RenderClear(renderer);
   map.render(renderer, camera);
+  player.render(renderer, camera);
 
-  player.render(renderer);
+  SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+  SDL_RenderDrawLine(renderer, WINDOW_WIDTH/2 + 50, 0, WINDOW_WIDTH/2 + 50, WINDOW_HEIGHT);
 
   SDL_RenderPresent(renderer);
 }
