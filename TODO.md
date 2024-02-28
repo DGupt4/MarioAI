@@ -12,5 +12,5 @@
     - [x] Cleanly load all the sprites (tile_ids?)
 
 ### FUTURE IMPROVEMENTS
-- [ ] Change map rendering to only use textures (better performance) 
+- [x] Change map rendering to only use textures (better performance) 
 - [ ] Don't render sprites that aren't shown on screen

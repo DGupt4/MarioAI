@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SDL.h>
+
 #include <iostream>
 
 #include "Map.h"
@@ -20,13 +21,14 @@ private:
   void update();
   void render();
 
-  SDL_Window *window;
-  SDL_Renderer *renderer;
+  SDL_Window* window;
+  SDL_Renderer* renderer;
+  SDL_Rect ground_rect;
+  SDL_Rect camera;
+
   Player player;
   Map map;
 
   float delta_time;
-  SDL_Rect ground_rect;
-  SDL_Rect camera;
   bool quit;
 };

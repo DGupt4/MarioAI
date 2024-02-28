@@ -1,15 +1,14 @@
 #include <iostream>
 
+#include "Player.h"
 #include "AABBCollision.h"
 #include "Constants.h"
-#include "Player.h"
 
 Player::Player()
     : x(0), y(300), velocity_x(0), velocity_y(0), width(50), height(50),
       key_state(), is_on_ground(false) {}
 
 void Player::process_input(SDL_Event event) {
-
   bool press_state = (event.type == SDL_KEYDOWN);
 
   if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) {
@@ -36,8 +35,7 @@ void Player::process_input(SDL_Event event) {
   }
 }
 
-void Player::update(float delta_time, SDL_Rect platform, SDL_Rect& camera) {
-
+void Player::update(float delta_time, SDL_Rect &platform, SDL_Rect &camera) {
   bool is_on_ground = false;
 
   if (key_state["LEFT"]) {
@@ -53,7 +51,7 @@ void Player::update(float delta_time, SDL_Rect platform, SDL_Rect& camera) {
   if (velocity_x < -MAX_SPEED)
     velocity_x = -MAX_SPEED;
 
-  SDL_Rect temp = {x, y, width, height};
+  SDL_Rect temp = {static_cast<int>(x), static_cast<int>(y), static_cast<int>(width), static_cast<int>(height)};
   is_on_ground = AABBCollision::check_collision(temp, platform);
 
   if (!is_on_ground) {
@@ -86,11 +84,10 @@ void Player::update(float delta_time, SDL_Rect platform, SDL_Rect& camera) {
     velocity_x = 0;
     x = camera.x + camera.w;
   }
-
 }
 
-void Player::render(SDL_Renderer *renderer, SDL_Rect& camera) {
-  SDL_Rect playerRect = {x - camera.x, y - camera.y, width, height};
+void Player::render(SDL_Renderer *renderer, SDL_Rect &camera) {
+  SDL_Rect playerRect = {static_cast<int>(x - camera.x), static_cast<int>(y - camera.y), static_cast<int>(width), static_cast<int>(height)};
   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
   SDL_RenderFillRect(renderer, &playerRect);
 }

@@ -2,7 +2,7 @@
 
 # Compiler and flags
 CC = g++
-CFLAGS = $(shell sdl2-config --cflags)
+CFLAGS = $(shell sdl2-config --cflags) -std=c++14
 LIBS = $(shell sdl2-config --libs) -lSDL2_Image
 INCLUDE_FLAGS = -Iinclude
 

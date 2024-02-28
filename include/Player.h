@@ -1,16 +1,16 @@
 #pragma once
 
-#include <SDL.h>
 #include <string>
 #include <unordered_map>
+#include <SDL.h>
 
 class Player {
 public:
   Player();
 
   void process_input(SDL_Event event);
-  void update(float delta_time, SDL_Rect platform, SDL_Rect& camera);
-  void render(SDL_Renderer *renderer, SDL_Rect& camera);
+  void update(float delta_time, SDL_Rect &platform, SDL_Rect &camera);
+  void render(SDL_Renderer *renderer, SDL_Rect &camera);
 
   int get_x();
   int get_y();
