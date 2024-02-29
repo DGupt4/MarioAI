@@ -1,6 +1,10 @@
 ### TODO
+- [ ] Movement
+    - [x] Use Vector2D
+    - [ ] Ground collision 
 
 ### DONE
+- [x] Basic Player Sprite 
 - [x] Player Camera
     - [x] Basic scrolling functionality
     - [x] Scrolling based on player movement 

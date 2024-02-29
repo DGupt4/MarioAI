@@ -5,8 +5,8 @@
 #include "Constants.h"
 
 Game::Game()
-    : window(nullptr), renderer(nullptr), player(), map("src/test_map.csv"),
-      delta_time(0), ground_rect(), quit(false) {
+    : window(nullptr), renderer(nullptr), player(50, 50), map("src/test_map.csv"),
+      delta_time(0), quit(false) {
 
   if (!initialize()) {
     std::cout << "Initalization failed." << std::endl;
@@ -40,11 +40,6 @@ bool Game::initialize() {
 
   map.create_tile_texture(renderer);
 
-  ground_rect.x = 0;
-  ground_rect.y = 430;
-  ground_rect.w = map.get_width();
-  ground_rect.h = 50;
-
   camera.x = 0;
   camera.y = 0;
   camera.w = WINDOW_WIDTH;
@@ -75,7 +70,7 @@ void Game::process_input() {
 
 void Game::update() {
 
-  player.update(delta_time, ground_rect, camera);
+  player.update(delta_time, camera);
 
   int center_pos = player.get_x() - (WINDOW_WIDTH / 2);
   if (center_pos > 0) {
@@ -94,7 +89,7 @@ void Game::render() {
   player.render(renderer, camera);
 
   SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-  SDL_RenderDrawLine(renderer, WINDOW_WIDTH / 2 + 50, 0, WINDOW_WIDTH / 2 + 50,
+  SDL_RenderDrawLine(renderer, WINDOW_WIDTH / 2, 0, WINDOW_WIDTH / 2,
                      WINDOW_HEIGHT);
 
   SDL_RenderPresent(renderer);

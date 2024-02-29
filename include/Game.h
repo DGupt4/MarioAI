@@ -23,7 +23,6 @@ private:
 
   SDL_Window* window;
   SDL_Renderer* renderer;
-  SDL_Rect ground_rect;
   SDL_Rect camera;
 
   Player player;
